@@ -371,11 +371,13 @@ EOF
 build() {
     export PATH="$(pwd)/wrappers:$PATH"
 
-    local -a split=($CFLAGS)
-    local -A flags
-    for opt in "${split[@]}"; do flags["${opt%%=*}"]="${opt##*=}"; done
-    local march="${flags["-march"]:-nocona}"
-    local mtune="${flags["-mtune"]:-core-avx2}"
+    # Portable, distributable baseline: match Arch upstream's official flags
+    # (-march=x86-64 -mtune=generic) so the built package runs on any x86-64
+    # CPU rather than the machine that happened to build it. Do NOT inherit
+    # -march from the host makepkg.conf here: a host set to -march=native would
+    # silently produce a CPU-specific package that SIGILLs elsewhere.
+    local march="x86-64"
+    local mtune="generic"
 
     CFLAGS="-O2 -march=${march} -mtune=${mtune}"
     CXXFLAGS="-O2 -march=${march} -mtune=${mtune}"
