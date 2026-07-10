@@ -37,8 +37,15 @@ makepkg -si
 or grab the built package from the releases and `pacman -U` it. Restart Steam,
 then per game: Properties → Compatibility → `proton-g29-…`.
 
-Non-Arch distros: extract a release dist tarball into
-`~/.steam/root/compatibilitytools.d/` and restart Steam. No promises it'll work.
+Non-Arch distros, the Steam Deck, or anywhere you want one artifact that runs
+regardless of the host system: use the **SLR build** (Proton compiled inside
+the Steam Linux Runtime container, GE-Proton style) — see
+[`slr/BUILD.md`](slr/BUILD.md). It produces a `proton-g29-slr.tar.xz` you
+extract into `~/.steam/root/compatibilitytools.d/` and restart Steam.
+
+(A dist tarball from the *native* build above also drops into
+`~/.steam/root/compatibilitytools.d/`, but it's host-linked — no promises it'll
+work off-Arch. The SLR build is the portable one.)
 
 ## Notes
 
