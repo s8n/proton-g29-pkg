@@ -402,8 +402,13 @@ build() {
         --without-steamrt-depends \
         --without-tts
 
-    SUBJOBS=$([[ "$MAKEFLAGS" =~ -j\ *([1-9][0-9]*) ]] && echo "${BASH_REMATCH[1]}" || echo "$(nproc)") \
-        make -j1 dist
+    # This Proton derives its build parallelism from the -j in MAKEFLAGS
+    # (Makefile.in: "J = $(filter -j%,$(MAKEFLAGS))"). The SUBJOBS env var that
+    # older Proton read is gone, so a top-level `make -j1` pins the ENTIRE build
+    # (wine, dxvk, every sub-make) to a single core. Use the real core count.
+    local _jobs
+    _jobs=$([[ "$MAKEFLAGS" =~ -j\ *([1-9][0-9]*) ]] && echo "${BASH_REMATCH[1]}" || echo "$(nproc)")
+    make -j"${_jobs}" dist
 
     cd dist
     sed -r \
