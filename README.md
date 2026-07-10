@@ -4,7 +4,7 @@ Arch/CachyOS PKGBUILD for **proton-g29**, a Steam Play compatibility tool:
 [proton-cachyos](https://github.com/CachyOS/proton-cachyos) (native build)
 with working Logitech wheel support — input mapping *and* force feedback —
 for the G29 family (G29/G27/G25/Driving Force GT/DFP) on the plain SDL path,
-no hidraw passthrough hacks.
+no hidraw passthrough hacks. Might also help with others, especially with force feedback.
 
 Shows up in Steam as **`proton-g29-<version> (cachyos native + logitech FFB)`**
 and installs side by side with other Proton versions.
@@ -38,7 +38,7 @@ or grab the built package from the releases and `pacman -U` it. Restart Steam,
 then per game: Properties → Compatibility → `proton-g29-…`.
 
 Non-Arch distros: extract a release dist tarball into
-`~/.steam/root/compatibilitytools.d/` and restart Steam.
+`~/.steam/root/compatibilitytools.d/` and restart Steam. No promises it'll work.
 
 ## Notes
 
@@ -49,5 +49,5 @@ Non-Arch distros: extract a release dist tarball into
   restored wine OpenCL linkage, `CMAKE_POLICY_VERSION_MINIMUM` for legacy
   submodules, an `afdko` dispatcher shim, and the Steam Linux Runtime
   requirement stripped from `toolmanifest.vdf`.
-- This package is unsupported by Valve and CachyOS — don't report issues with
+- This package is unsupported by Valve and CachyOS, don't report issues with
   it to them.
