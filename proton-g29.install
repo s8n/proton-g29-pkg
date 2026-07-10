@@ -1,0 +1,11 @@
+#!/bin/sh
+
+post_install() {
+  echo ":: proton-cachyos (native) with Logitech G29/Driving Force wheel fixes."
+  echo "   Select 'proton-g29-...' in Steam > game Properties > Compatibility."
+  echo ""
+  echo "   This package is UNSUPPORTED by Valve and CachyOS. Please do not bother"
+  echo "   them if something doesn't run with it."
+  echo ""
+  echo "   Wheel-related issues: https://github.com/s8n/proton-g29"
+}

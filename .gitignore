@@ -1,0 +1,15 @@
+# makepkg work dirs
+/src/
+/pkg/
+# makepkg VCS source mirrors
+/proton-cachyos/
+/sdl3-g29/
+# cargo home used during the build
+/proton-cargo/
+# downloaded sources
+*.tar.xz
+*.tar.gz
+*.zip
+# built packages
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
